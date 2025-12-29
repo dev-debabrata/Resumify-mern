@@ -1,3 +1,4 @@
+import { transporter, sender } from "../lib/nodemailer.js";
 import { createWelcomeEmailTemplate } from "../emails/emailTemplates.js";
 
 export const sendWelcomeEmail = async (email, name, clientURL) => {
