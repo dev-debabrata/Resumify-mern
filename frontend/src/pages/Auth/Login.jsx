@@ -58,12 +58,12 @@ const Login = ({ setCurrentPage }) => {
     };
 
     return (
-        <div className="w-[90vw] md:w-[33vw] p-7 flex flex-col justify-center">
-            <h3 className="text-lg font-semibold text-black">
+        <div className="w-[90vw] md:w-[30vw] p-7 flex flex-col justify-center">
+            <h3 className="text-lg font-semibold text-center text-black">
                 Welcome Back
             </h3>
 
-            <p className="text-xs text-slate-700 mt-[5px] mb-6">
+            <p className="text-xs text-slate-700 text-center mt-[5px] mb-6">
                 Please enter your details to log in
             </p>
 
@@ -91,16 +91,18 @@ const Login = ({ setCurrentPage }) => {
                     </p>
                 )}
 
-                <button type="submit" className="btn-primary">
+                <button
+                    type="submit"
+                    className="btn-primary">
                     Login
                 </button>
 
-                <p className="text-[13px] text-slate-800 mt-3">
+                <p className="text-[13px] text-slate-800 mt-3 text-center">
                     Don&apos;t have an account?{" "}
                     <button
                         type="button"
                         onClick={() => setCurrentPage("signup")}
-                        className="font-medium text-primary underline cursor-pointer"
+                        className="font-medium text-primary underline cursor-pointer hover:text-blue-800"
                     >
                         Sign Up
                     </button>

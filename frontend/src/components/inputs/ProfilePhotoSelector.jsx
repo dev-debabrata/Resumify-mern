@@ -33,7 +33,7 @@ const ProfilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
     }
 
     return (
-        <div className=' flex justify-center mb-6'>
+        <div className=' flex justify-center mb-4'>
             <input
                 type="file"
                 accept='image/*'
@@ -44,9 +44,12 @@ const ProfilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
             />
 
             {!image ? (
-                <div className=' w-20 h-20 flex items-center justify-center bg-purple-50 rounded-full relative cursor-pointer'>
-                    <User className=' text-4xl text-purple-500' />
-                    <button type='button' onClick={onChooseFile} className=' w-8 h-8 flex items-center justify-center bg-linear-to-r from-purple-500/85 to-purple-700 text-white rounded-full absolute -bottom-1 -right-1 cursor-pointer'>
+                <div className=' w-20 h-20 flex items-center justify-center bg-blue-50 rounded-full relative cursor-pointer'>
+                    <User className=' text-4xl text-blue-500' />
+                    <button
+                        type='button'
+                        onClick={onChooseFile}
+                        className=' w-8 h-8 flex items-center justify-center bg-linear-to-r from-blue-500/85 to-blue-700 text-white rounded-full absolute -bottom-1 -right-1 cursor-pointer'>
                         <Upload />
                     </button>
                 </div>
@@ -56,7 +59,10 @@ const ProfilePhotoSelector = ({ image, setImage, preview, setPreview }) => {
                         src={preview || previewUrl}
                         alt="profile photo"
                         className=' w-20 h-20 rounded-full object-cover' />
-                    <button type='button' onClick={handleRemoveImage} className=' w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1 cursor-pointer'>
+                    <button
+                        type='button'
+                        onClick={handleRemoveImage}
+                        className=' w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1 cursor-pointer'>
                         <Trash />
                     </button>
                 </div>

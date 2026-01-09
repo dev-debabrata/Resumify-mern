@@ -1,17 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"); */
 
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Urbanist", sans-serif;
+  /* --font-display: "Urbanist", sans-serif; */
   --breakpoint-3xl: 1920px;
-  --color-primary: #9328e7;
+  --color-primary: #155dfc;
 }
 
 @layer base {
-  html {
+  /* html {
     font-family: var(--font-display);
-  }
+  } */
 
   body {
     background-color: #fcfbfc;
@@ -47,11 +47,11 @@
 }
 
 .input-box {
-  @apply w-full flex justify-center gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-3 mb-4 mt-3 border border-gray-100 outline-none focus-within:border-purple-300;
+  @apply w-full flex justify-center gap-3 text-sm text-black bg-gray-50/50 rounded px-4 py-2 mb-4 mt-1 border border-gray-400 outline-none focus-within:border-purple-300;
 }
 
 .btn-primary {
-  @apply w-full text-sm font-medium text-white bg-black shadow-lg shadow-purple-600/5 p-2.5 rounded-md my-1 hover:bg-purple-600/15 hover:text-black cursor-pointer;
+  @apply w-full text-sm font-medium text-white bg-black shadow-lg shadow-purple-600/5 p-2.5 rounded-md my-1 hover:bg-gray-600/30 hover:text-black cursor-pointer;
 }
 
 .btn-small {

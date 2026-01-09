@@ -11,9 +11,9 @@ import upload from "../middleware/upload.middleware.js";
 const router = express.Router();
 
 // Auth Routes
-router.post("/register", registerUser); // Register User
-router.post("/login", loginUser);        // Login User
-router.get("/profile", protect, getUserProfile); // Get User Profile
+router.post("/register", registerUser);
+router.post("/login", loginUser);
+router.get("/profile", protect, getUserProfile);
 
 // Image Upload Route
 router.post(
