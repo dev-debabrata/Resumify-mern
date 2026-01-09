@@ -4,9 +4,10 @@ import HeroImg from "../assets/hero-img.png";
 import Login from './Auth/Login';
 import SignUp from './Auth/SignUp';
 import Modal from '../components/Modal';
-import { UserContext } from '../context/userContext';
+import { UserContext } from '../context/UserContext';
 import ProfileInfoCard from '../components/cards/ProfileInfoCard';
 import Footer from '../components/Footer';
+
 
 const LandingPage = () => {
     const { user } = useContext(UserContext);

@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import Input from '../../components/inputs/Input';
 import { validateEmail } from '../../utils/helper';
-import { UserContext } from '../../context/userContext';
+import { UserContext } from '../../context/UserContext';
 import axiosInstance from '../../utils/axios';
 import { API_PATHS } from '../../utils/apiPaths';
 
@@ -20,23 +21,23 @@ const Login = ({ setCurrentPage }) => {
         setError("");
 
         if (!validateEmail(email.trim())) {
-            setError("Please enter a valid email address.");
+            const msg = "Please enter a valid email address.";
+            setError(msg);
+            toast.error(msg);
             return;
         }
 
         if (!password) {
-            setError("Please enter the password.");
+            const msg = "Please enter the password.";
+            setError(msg);
+            toast.error(msg);
             return;
         }
 
-        // Login API Call
         try {
             const response = await axiosInstance.post(
                 API_PATHS.AUTH.LOGIN,
-                {
-                    email,
-                    password,
-                }
+                { email, password }
             );
 
             const { token } = response.data;
@@ -46,16 +47,19 @@ const Login = ({ setCurrentPage }) => {
             }
 
             updateUser(response.data);
+            toast.success("Login successful 🎉");
             navigate("/dashboard");
-        } catch (error) {
-            if (error.response?.data?.message) {
-                setError(error.response.data.message);
-            } else {
-                setError("Something went wrong. Please try again.");
-            }
-        }
 
+        } catch (err) {
+            const msg =
+                err.response?.data?.message ||
+                "Something went wrong. Please try again.";
+
+            setError(msg);
+            toast.error(msg);
+        }
     };
+
 
     return (
         <div className="w-[90vw] md:w-[30vw] p-7 flex flex-col justify-center">
@@ -70,7 +74,7 @@ const Login = ({ setCurrentPage }) => {
             <form onSubmit={handleLogin}>
 
                 <Input
-                    type="text"
+                    type="email"
                     value={email}
                     label="Email Address"
                     placeholder="dev-debabrata@gmail.com"
@@ -113,3 +117,64 @@ const Login = ({ setCurrentPage }) => {
 };
 
 export default Login;
+
+
+
+// import React, { useContext, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
+// import Input from '../../components/inputs/Input';
+// import { validateEmail } from '../../utils/helper';
+// import { UserContext } from '../../context/userContext';
+// import axiosInstance from '../../utils/axios';
+// import { API_PATHS } from '../../utils/apiPaths';
+
+// const Login = ({ setCurrentPage }) => {
+
+//     const [email, setEmail] = useState("");
+//     const [password, setPassword] = useState("");
+//     const [error, setError] = useState("");
+
+//     const { updateUser } = useContext(UserContext);
+//     const navigate = useNavigate();
+
+//     const handleLogin = async (e) => {
+//         e.preventDefault();
+//         setError("");
+
+//         if (!validateEmail(email.trim())) {
+//             setError("Please enter a valid email address.");
+//             return;
+//         }
+
+//         if (!password) {
+//             setError("Please enter the password.");
+//             return;
+//         }
+
+//         // Login API Call
+//         try {
+//             const response = await axiosInstance.post(
+//                 API_PATHS.AUTH.LOGIN,
+//                 {
+//                     email,
+//                     password,
+//                 }
+//             );
+
+//             const { token } = response.data;
+
+//             if (token) {
+//                 localStorage.setItem("token", token);
+//             }
+
+//             updateUser(response.data);
+//             navigate("/dashboard");
+//         } catch (error) {
+//             if (error.response?.data?.message) {
+//                 setError(error.response.data.message);
+//             } else {
+//                 setError("Something went wrong. Please try again.");
+//             }
+//         }
+
+//     };

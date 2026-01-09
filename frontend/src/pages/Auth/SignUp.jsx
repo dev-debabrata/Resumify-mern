@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import Input from '../../components/inputs/Input';
 import { validateEmail } from '../../utils/helper';
 import ProfilePhotoSelector from '../../components/inputs/ProfilePhotoSelector';
-import { UserContext } from '../../context/userContext';
+import { UserContext } from '../../context/UserContext';
 import axiosInstance from '../../utils/axios';
 import { API_PATHS } from '../../utils/apiPaths';
 import uploadImage from '../../utils/uploadImage';
@@ -21,36 +22,32 @@ const SignUp = ({ setCurrentPage }) => {
 
     const handleSignUp = async (e) => {
         e.preventDefault();
+        setError("");
 
         if (!fullName.trim()) {
-            setError("Please enter your full name.");
+            const msg = "Please enter your full name.";
+            setError(msg);
+            toast.error(msg);
             return;
         }
 
         if (!validateEmail(email)) {
-            setError("Please enter a valid email address.");
+            const msg = "Please enter a valid email address.";
+            setError(msg);
+            toast.error(msg);
             return;
         }
 
         if (!password) {
-            setError("Please enter the password.");
+            const msg = "Please enter the password.";
+            setError(msg);
+            toast.error(msg);
             return;
         }
 
-        setError("");
-
-        console.log({
-            fullName,
-            email,
-            password,
-            profilePic,
-        });
-
-        // Signup API Call
         try {
             let profileImageUrl = "";
 
-            // Upload image if present
             if (profilePic) {
                 const imgUploadRes = await uploadImage(profilePic);
                 profileImageUrl = imgUploadRes?.imageUrl || "";
@@ -73,15 +70,19 @@ const SignUp = ({ setCurrentPage }) => {
             }
 
             updateUser(response.data);
+            toast.success("Account created successfully 🎉");
             navigate("/dashboard");
-        } catch (error) {
-            if (error.response?.data?.message) {
-                setError(error.response.data.message);
-            } else {
-                setError("Something went wrong. Please try again.");
-            }
+
+        } catch (err) {
+            const msg =
+                err.response?.data?.message ||
+                "Something went wrong. Please try again.";
+
+            setError(msg);
+            toast.error(msg);
         }
     };
+
 
     return (
         <div className="w-[90vw] md:w-[30vw] p-7 flex flex-col justify-center">
@@ -109,7 +110,7 @@ const SignUp = ({ setCurrentPage }) => {
                 />
 
                 <Input
-                    type="text"
+                    type="email"
                     value={email}
                     label="Email Address"
                     placeholder="dev-debabrata@gmail.com"
