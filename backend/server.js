@@ -4,7 +4,7 @@ import cors from "cors";
 import path from "path";
 
 import { connectDB } from "./lib/db.js";
-
+import authRouths from "./routes/auth.route.js";
 
 dotenv.config();
 
@@ -24,6 +24,11 @@ app.use(
     })
 );
 
+
+// Route
+app.use("/api/auth", authRouths);
+// app.use("/api/resume", resumeRouths);
+
 // ---------------- PRODUCTION FRONTEND SERVE ----------------
 if (process.env.NODE_ENV === "production") {
     const __dirname = path.resolve();
@@ -39,8 +44,9 @@ if (process.env.NODE_ENV === "production") {
 
 // Start Server
 app.listen(PORT, () => {
-    console.log("Server running on port: " + PORT)
-    connectDB()
+    connectDB();
+    console.log("Server running on port: " + PORT);
+
 });
 
 
