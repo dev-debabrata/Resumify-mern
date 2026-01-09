@@ -31,7 +31,6 @@ axiosInstance.interceptors.response.use(
         const status = error.response?.status;
         const requestUrl = error.config?.url || "";
 
-        // 🚫 Auth routes should NOT trigger logout
         const isAuthRoute =
             requestUrl.includes("/api/auth/login") ||
             requestUrl.includes("/api/auth/register");
