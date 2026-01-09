@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import HeroImg from "../assets/hero-img.png";
 import Login from './Auth/Login';
 import SignUp from './Auth/SignUp';
 import Modal from '../components/Modal';
+import { UserContext } from '../context/userContext';
+import ProfileInfoCard from '../components/cards/ProfileInfoCard';
 
 const LandingPage = () => {
-
+    const { user } = useContext(UserContext);
     const navigate = useNavigate();
 
     const [openAuthModal, setOpenAuthModal] = useState(false);
@@ -22,9 +24,11 @@ const LandingPage = () => {
                     <div className="text-xl font-bold">
                         Resumify
                     </div>
-                    <button onClick={() => setOpenAuthModal(true)} className="bg-purple-100 text-sm font-semibold text-black px-7 py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer">
-                        Login / Sign up
-                    </button>
+                    {user ? <ProfileInfoCard /> :
+                        <button onClick={() => setOpenAuthModal(true)} className="bg-purple-100 text-sm font-semibold text-black px-7 py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer">
+                            Login / Sign up
+                        </button>
+                    }
                 </header>
 
                 {/* Hero Content */}
