@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../utils/axiosInstance";
+import axiosInstance from "../../utils/axios";
 import { API_PATHS } from "../../utils/apiPaths";
+import DashboardLayout from "../../components/layout/DashboardLayout";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Dashboard = () => {
         fetchAllResumes();
     }, []);
 
-    return <div>Dashboard</div>;
+    return <DashboardLayout>Dashboard</DashboardLayout>;
 };
 
 export default Dashboard;
