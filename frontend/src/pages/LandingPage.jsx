@@ -7,6 +7,7 @@ import Modal from '../components/Modal';
 import { UserContext } from '../context/UserContext';
 import ProfileInfoCard from '../components/cards/ProfileInfoCard';
 import Footer from '../components/Footer';
+import Navbar from '../components/layout/Navbar';
 
 
 const LandingPage = () => {
@@ -20,10 +21,12 @@ const LandingPage = () => {
 
     return (
         <>
+
             <div className=" w-[85%] min-h-full bg-white px-4 pt-6 mx-auto">
                 <div className="container mx-auto px-4">
+                    <Navbar setOpenAuthModal={setOpenAuthModal} />
                     {/* Header */}
-                    <header className="flex justify-between items-center mb-16">
+                    {/* <header className="flex justify-between items-center mb-16">
                         <div className="text-3xl font-bold">
                             Resumify
                         </div>
@@ -32,7 +35,7 @@ const LandingPage = () => {
                                 Login / Sign up
                             </button>
                         }
-                    </header>
+                    </header> */}
 
                     {/* Hero Content */}
                     <div className=" flex flex-col md:flex-row items-center">
