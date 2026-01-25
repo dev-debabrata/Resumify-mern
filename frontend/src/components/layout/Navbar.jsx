@@ -1,9 +1,21 @@
-import React from 'react'
+import React from "react";
+import ProfileInfoCard from "../Cards/ProfileInfoCard";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <div>Navbar</div>
-    )
-}
+        <div className="w-[85%] pt-6 mx-auto h-16 bg-white border border-b border-gray-200/50 backdrop-blur-[2px] py-2.5 px-4 md:px-0 sticky top-0 z-30">
+            <div className="container  flex items-center justify-between gap-5">
+                <Link to="/dashboard">
+                    <h2 className="text-lg md:text-xl font-medium text-black leading-5">
+                        Resume Builder
+                    </h2>
+                </Link>
 
-export default Navbar
+                <ProfileInfoCard />
+            </div>
+        </div>
+    );
+};
+
+export default Navbar;
