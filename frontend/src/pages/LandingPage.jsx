@@ -1,17 +1,18 @@
-import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
 import HeroImg from "../assets/hero-img.png";
-import Login from './Auth/Login';
-import SignUp from './Auth/SignUp';
-import Modal from '../components/Modal';
-import { UserContext } from '../context/UserContext';
-import ProfileInfoCard from '../components/cards/ProfileInfoCard';
-import Footer from '../components/Footer';
-import Navbar from '../components/layout/Navbar';
+
+import Login from "./Auth/Login";
+import SignUp from "./Auth/SignUp";
+
+import Modal from "../components/Modal";
+import Footer from "../components/Footer";
+import Navbar from "../components/layout/Navbar";
+import { useNavigate } from "react-router-dom";
+
 
 
 const LandingPage = () => {
-    const { user } = useContext(UserContext);
+
     const navigate = useNavigate();
 
     const [openAuthModal, setOpenAuthModal] = useState(false);
@@ -21,21 +22,10 @@ const LandingPage = () => {
 
     return (
         <>
+            <Navbar setOpenAuthModal={setOpenAuthModal} />
 
-            <div className=" w-[85%] min-h-full bg-white px-4 pt-6 mx-auto">
+            <div className="max-w-6xl min-h-full bg-white px-4 pt-6 mx-auto">
                 <div className="container mx-auto px-4">
-                    <Navbar setOpenAuthModal={setOpenAuthModal} />
-                    {/* Header */}
-                    {/* <header className="flex justify-between items-center mb-16">
-                        <div className="text-3xl font-bold">
-                            Resumify
-                        </div>
-                        {user ? <ProfileInfoCard /> :
-                            <button onClick={() => setOpenAuthModal(true)} className="bg-black text-sm font-semibold text-white px-7 py-2.5 rounded-lg hover:bg-gray-800 transition-colors cursor-pointer">
-                                Login / Sign up
-                            </button>
-                        }
-                    </header> */}
 
                     {/* Hero Content */}
                     <div className=" flex flex-col md:flex-row items-center">
