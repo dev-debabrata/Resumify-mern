@@ -1,15 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeroImg from "../assets/hero-img.png";
-
 import Login from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
-
 import Modal from "../components/Modal";
 import Footer from "../components/Footer";
 import Navbar from "../components/layout/Navbar";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-
 
 
 const LandingPage = () => {
