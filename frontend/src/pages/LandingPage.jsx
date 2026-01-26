@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import HeroImg from "../assets/hero-img.png";
 
 import Login from "./Auth/Login";
@@ -8,15 +8,23 @@ import Modal from "../components/Modal";
 import Footer from "../components/Footer";
 import Navbar from "../components/layout/Navbar";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 
 
 const LandingPage = () => {
 
     const navigate = useNavigate();
+    const { user, loading } = useContext(UserContext);
 
     const [openAuthModal, setOpenAuthModal] = useState(false);
     const [currentPage, setCurrentPage] = useState("login");
+
+    useEffect(() => {
+        if (!loading && user) {
+            navigate("/dashboard");
+        }
+    }, [user, loading, navigate])
 
     const handleCTA = () => { };
 
