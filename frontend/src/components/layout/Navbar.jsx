@@ -33,26 +33,3 @@ const Navbar = ({ setOpenAuthModal }) => {
 
 export default Navbar;
 
-
-
-// import React from "react";
-// import ProfileInfoCard from "../Cards/ProfileInfoCard";
-// import { Link } from "react-router-dom";
-
-// const Navbar = () => {
-//     return (
-//         <div className="w-[85%] min-h-full bg-white px-4 pt-6 mx-auto">
-//             <div className="container mx-auto px-4 flex justify-between items-center mb-16">
-//                 <Link to="/dashboard">
-//                     <h2 className="text-3xl font-bold text-black leading-5">
-//                         Resumify
-//                     </h2>
-//                 </Link>
-
-//                 <ProfileInfoCard />
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Navbar;
