@@ -37,10 +37,7 @@ const Dashboard = () => {
                 {/* Add New Resume Card */}
                 <div
                     onClick={() => setOpenCreateModal(true)}
-                    className="h-[300px] flex flex-col gap-5 items-center justify-center
-          bg-white rounded-lg border border-purple-100
-          hover:border-purple-300 hover:bg-purple-50/5
-          cursor-pointer transition"
+                    className="h-[300px] flex flex-col gap-5 items-center justify-center bg-white rounded-lg border border-purple-100 hover:border-purple-300 hover:bg-purple-50/5 cursor-pointer transition"
                 >
                     <div className="w-12 h-12 flex items-center justify-center rounded-full bg-purple-200/40">
                         <CirclePlus className="text-xl text-purple-500" />

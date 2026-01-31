@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getLightColorFromImage } from "../../utils/helper";
 
 const ResumeSummaryCard = ({ imgUrl, title, lastUpdated, onSelect }) => {
+
     const [bgColor, setBgColor] = useState("#ffffff");
 
     useEffect(() => {
@@ -19,10 +20,7 @@ const ResumeSummaryCard = ({ imgUrl, title, lastUpdated, onSelect }) => {
     return (
         <div
             onClick={onSelect}
-            className="h-[300px] flex flex-col items-center justify-between
-      bg-white rounded-lg border border-purple-100
-      hover:border-purple-300 hover:bg-purple-50/5
-      cursor-pointer transition"
+            className="h-[300px] flex flex-col items-center justify-between bg-white rounded-lg border border-purple-100 hover:border-purple-300 hover:bg-purple-50/5 cursor-pointer transition"
         >
             {/* Image Section */}
             <div className="p-4 w-full">
